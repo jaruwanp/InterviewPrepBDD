@@ -2,3 +2,6 @@
 /.idea
 /target
 config.properties
+InterviewPrepBDD.iml
+login.featureLoginSteps
+loginPage
