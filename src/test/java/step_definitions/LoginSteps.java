@@ -25,12 +25,12 @@ public class LoginSteps implements CommonPage {
 
     @Then("I enter username {string}")
     public void enterUsername(String username) {
-       BrowserUtils.sendKeys(getElementByXpath(XPATH_TEMPLATE_INPUT_FIELD,"Username"),username);
+       BrowserUtils.sendKeys(getElementByXpath(XPATH_TEMPLATE_INPUT_FIELD,"Enter Username"),username);
     }
 
     @And("I enter password {string}")
     public void iEnterPassword(String password) {
-        BrowserUtils.sendKeys(getElementByXpath(XPATH_TEMPLATE_INPUT_FIELD,"Password"),password);
+        BrowserUtils.sendKeys(getElementByXpath(XPATH_TEMPLATE_INPUT_FIELD,"Enter Password"),password);
     }
 
     @And("I click a button {string}")
@@ -48,7 +48,7 @@ public class LoginSteps implements CommonPage {
 
     @Then("Verify I can login successfully")
     public void verifyICanLoginSuccessfully() {
-        String expectedURL = "https://www.saucedemo.com/inventory.html";
+        String expectedURL = "https://interview-prep-test.herokuapp.com/login";
         BrowserUtils.assertEquals(BrowserUtils.getDriver().getCurrentUrl(),expectedURL);
     }
 }
