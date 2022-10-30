@@ -51,4 +51,6 @@ public class LoginSteps implements CommonPage {
         String expectedURL = "https://www.saucedemo.com/inventory.html";
         BrowserUtils.assertEquals(BrowserUtils.getDriver().getCurrentUrl(),expectedURL);
     }
+
+
 }

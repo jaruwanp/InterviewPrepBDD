@@ -7,4 +7,7 @@ public class HomePage {
 
     @FindBy(xpath = "//title[text()='Interview App']")
     public WebElement headerTitle;
+
+   @FindBy(xpath = "//*[text()='Sign out']")
+    public WebElement signOutBtn;
 }
