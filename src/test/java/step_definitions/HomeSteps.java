@@ -2,10 +2,14 @@ package step_definitions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.CommonPage;
 import pages.HomePage;
 import utils.BrowserUtils;
+
+import java.util.Map;
 
 public class HomeSteps implements CommonPage {
     HomePage page;
@@ -23,6 +27,20 @@ public class HomeSteps implements CommonPage {
     public void verify_header_text_is(String headerTitle) {
             BrowserUtils.assertEquals(BrowserUtils.getDriver().getTitle(),headerTitle);
         }
+
+    @When("When I fill out login form with following details:")
+    public void whenIFillOutLoginFormWithFollowingDetails(Map<String, String> map) {
+        for (String key : map.keySet()) {
+            if (key.equalsIgnoreCase("username")) {
+                BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.xpath(
+                        String.format(XPATH_TEMPLATE_INPUT_FIELD, "Enter username")
+                )), map.get(key));
+            } else {
+                BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.name(key)),map.get(key));
+
+            }
+        }
+    }
 }
 
 
