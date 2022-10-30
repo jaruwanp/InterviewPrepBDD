@@ -6,7 +6,6 @@ Feature: Home page tests
       | email    | test@yahoo.com |
       | password | test123        |
     When I click a button "Login"
-    Then Verify I can login successfully
 
   @IN-1 @regression
   Scenario: Log in form test

@@ -5,7 +5,6 @@ Feature: User Access page test
       | email    | test@yahoo.com |
       | password | test123        |
     When I click a button "Login"
-    Then Verify I can login successfully
 
   @IN-2 @regression
   Scenario: Verify Sign out text
