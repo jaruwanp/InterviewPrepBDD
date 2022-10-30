@@ -1,6 +1,12 @@
-# Default ignored files
 /.idea
 /target
 config.properties
+<<<<<<< HEAD
 pom.xml
 InterviewPrepBDD.iml
+=======
+InterviewPrepBDD.iml
+login.featureLoginSteps
+loginPage
+pom.xml
+>>>>>>> master
