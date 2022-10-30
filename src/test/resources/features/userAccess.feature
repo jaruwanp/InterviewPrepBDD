@@ -1,5 +1,4 @@
-Feature: Home page tests
-
+Feature: User Access page test
   Background: Navigate to Login Page
     Given I open url of homepage
     When I fill out login form with following details:
@@ -8,6 +7,7 @@ Feature: Home page tests
     When I click a button "Login"
     Then Verify I can login successfully
 
-  @IN-1 @regression
-  Scenario: Log in form test
-    Then Verify header text is "Interview App"
+  @IN-2 @regression
+  Scenario: Verify Sign out text
+    Then Verify "Sign out" button is present
+    Then Verify "Manage Access" Button is not displayed
