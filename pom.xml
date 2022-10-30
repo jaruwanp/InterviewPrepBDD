@@ -4,14 +4,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>Io.techleadacademy</groupId>
-    <artifactId>InterviewPrepBDD</artifactId>
+    <groupId>io.techleadacademy</groupId>
+    <artifactId>InterviewPrepPractice</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>18</maven.compiler.source>
-        <maven.compiler.target>18</maven.compiler.target>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
     </properties>
+
     <dependencies>
         <dependency>
             <groupId>com.github.javafaker</groupId>
@@ -58,6 +59,7 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
+
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
@@ -70,11 +72,10 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Automation Practice BDD</projectName>
+                            <projectName>Sauce Demo BDD</projectName>
                             <skip>false</skip>
                             <!-- output directory for the generated report -->
                             <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
-                            <!--                            <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>-->
                             <jsonFiles>
                                 <param>**/*.json</param>
                             </jsonFiles>
