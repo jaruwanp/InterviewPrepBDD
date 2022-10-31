@@ -8,11 +8,13 @@ import utils.BrowserUtils;
 import java.util.List;
 
 public class UserAccessPage {
+
     public UserAccessPage(){
         PageFactory.initElements(BrowserUtils.getDriver(),this);
     }
-    @FindBy(xpath = "//a/u[text()='Sign out']")
+    @FindBy (xpath = "//a/u[text()='Sign out']")
     public WebElement signOutBtn;
+
 
     @FindBy(xpath = "//a/u[text()='Manage Access']")
     public List<WebElement> manageAccessText;
@@ -37,5 +39,6 @@ public class UserAccessPage {
 
     @FindBy(xpath = "//td[5]")
     public List<WebElement> batchs;
+
 
 }
