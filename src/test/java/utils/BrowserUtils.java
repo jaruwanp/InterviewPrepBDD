@@ -215,6 +215,10 @@ public class BrowserUtils {
         select.selectByValue(text);
     }
 
+    public static String selectGetSelectedText(WebElement element) {
+        Select select = new Select(element);
+        return select.getOptions().get(0).getText();
+    }
     private static String splitElement(WebElement element){
         String result =element.toString().split(" -> ")[1];
         return result.substring(0,result.length()-1);

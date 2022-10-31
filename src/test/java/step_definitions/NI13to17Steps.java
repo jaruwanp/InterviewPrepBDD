@@ -80,10 +80,27 @@ public class NI13to17Steps implements CommonPage {
        page.deleteUserByEmail(userInfo.get("E-mail"));
     }
 
-    @And("I select the following filter option")
-    public void iSelectTheFollowingFilterOption(Map<String,String> filterOptions) {
-        for(String key:filterOptions.keySet()){
-            System.out.println(key + " | " + filterOptions.get(key));
+
+    @And("I select the {string} option")
+    public void iSelectTheOption(String filterOption) {
+        BrowserUtils.selectByVisibleText(page.selectFilter,filterOption);
+    }
+
+
+    @And("I enter {string} I want to filter")
+    public void iEnterIWantToFilter(String key) {
+        BrowserUtils.sendKeys(this.getElementByXpath(XPATH_TEMPLATE_INPUT_FIEDNAME,"search"),key);
+    }
+
+    @Then("Verify the result display as expected")
+    public void verifyTheResultDisplayAsExpected() {
+       // String filter = page.selectFilter;
+        //System.out.println(filter);
+        List<WebElement> elements = page.rows;
+        for(WebElement element:elements){
+            System.out.println(element.findElement(By.xpath("./td")).getText());
         }
+        Assert.assertTrue(true);
+
     }
 }

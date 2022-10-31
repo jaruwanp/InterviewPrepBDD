@@ -12,7 +12,6 @@
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
     </properties>
-
     <dependencies>
         <dependency>
             <groupId>com.github.javafaker</groupId>
@@ -59,7 +58,6 @@
                     <testFailureIgnore>true</testFailureIgnore>
                 </configuration>
             </plugin>
-
             <plugin>
                 <groupId>net.masterthought</groupId>
                 <artifactId>maven-cucumber-reporting</artifactId>
@@ -72,10 +70,11 @@
                             <goal>generate</goal>
                         </goals>
                         <configuration>
-                            <projectName>Sauce Demo BDD</projectName>
+                            <projectName>Automation Practice BDD</projectName>
                             <skip>false</skip>
                             <!-- output directory for the generated report -->
                             <outputDirectory>${project.build.directory}/cucumber-reports</outputDirectory>
+                            <!--                            <inputDirectory>${project.build.directory}/cucumber-reports</inputDirectory>-->
                             <jsonFiles>
                                 <param>**/*.json</param>
                             </jsonFiles>
@@ -85,4 +84,5 @@
             </plugin>
         </plugins>
     </build>
+
 </project>

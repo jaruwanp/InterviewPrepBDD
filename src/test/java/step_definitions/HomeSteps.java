@@ -51,6 +51,8 @@ public class HomeSteps implements CommonPage {
             case "Manage Access":
                 element = userAccessPage.manageAccessText.get(0);
                 break;
+            case "Search-Icon":
+                element=userAccessPage.btnSearchIcon;
             default:
                 element = getElementByXpath(XPATH_TEMPLATE_BUTTON, button);
         }

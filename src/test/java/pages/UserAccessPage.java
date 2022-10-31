@@ -55,6 +55,8 @@ public class UserAccessPage {
     @FindBy(xpath = "(//select[@class='form-control'])[3]")
     public WebElement selectFilter;
 
+    @FindBy(xpath = "//tbody/tr")
+    public List<WebElement> rows;
 
     public boolean checkExistingTextInTable(String str){
         System.out.println("//td[text()='" + str + "']");

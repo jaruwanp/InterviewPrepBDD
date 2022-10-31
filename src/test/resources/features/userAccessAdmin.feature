@@ -34,12 +34,16 @@ Feature: IN13-IN17 Tests
       | Batch      | 6                 |
 
   @NI-15 @regression
-  Scenario: Test Filter-user functionality
-    And I select the following filter option
-      | All       | admin           |
-      | Firstname | John            |
-      | Lastname  | admin           |
-      | Email     | admin@yahoo.com |
-      | Role      | Student         |
-      | Batch     | 1               |
-  Then Vefiry that the table display filtered info
+  Scenario Outline: Test Filter-user functionality
+    And I select the "<Filter-Option>" option
+    And I enter "<Key>" I want to filter
+    And I click a button "Search-Icon"
+    Then Verify the result display as expected
+    Examples:
+      | Filter-Option | Key             |
+      | All           | admin           |
+      | Firstname     | John            |
+      | Lastname      | admin           |
+      | Email         | admin@yahoo.com |
+      | Role          | Student         |
+      | Batch         | 1               |
