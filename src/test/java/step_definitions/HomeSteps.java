@@ -14,9 +14,11 @@ import java.util.Map;
 
 public class HomeSteps implements CommonPage {
     HomePage page;
-
+    UserAccessPage userAccessPage;
+    
     public HomeSteps() {
-        page = new HomePage();
+     page = new HomePage();
+     userAccessPage = new UserAccessPage();
 
     }
 
