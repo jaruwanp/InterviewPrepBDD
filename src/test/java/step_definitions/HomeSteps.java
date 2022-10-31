@@ -9,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import pages.CommonPage;
 import pages.HomePage;
 import utils.BrowserUtils;
-
+import pages.UserAccessPage;
 import java.util.Map;
 
 public class HomeSteps implements CommonPage {
