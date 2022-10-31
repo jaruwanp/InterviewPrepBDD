@@ -3,6 +3,5 @@
 config.properties
 pom.xml
 InterviewPrepBDD.iml
-pom.xml
 /src/test/java/runners/CukesRunner.java
 /src/test/java/data/Temp.java
