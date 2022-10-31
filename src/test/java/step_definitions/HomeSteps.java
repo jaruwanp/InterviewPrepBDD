@@ -44,11 +44,6 @@ public class HomeSteps implements CommonPage {
         BrowserUtils.click(BrowserUtils.getDriver().findElement(
                 By.xpath(String.format(XPATH_TEMPLATE_BUTTON, button))));
     }
-
-    @Then("Verify I can login successfully")
-    public void verify_i_can_login_successfully() {
-        BrowserUtils.assertTrue(true);
-    }
 }
 
 
