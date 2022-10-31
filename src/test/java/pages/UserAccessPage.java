@@ -9,12 +9,12 @@ import java.util.List;
 
 public class UserAccessPage {
 
-    public UserAccessPage(){
-        PageFactory.initElements(BrowserUtils.getDriver(),this);
+    public UserAccessPage() {
+        PageFactory.initElements(BrowserUtils.getDriver(), this);
     }
-    @FindBy (xpath = "//a/u[text()='Sign out']")
-    public WebElement signOutBtn;
 
+    @FindBy(xpath = "//a/u[text()='Sign out']")
+    public WebElement signOutBtn;
 
     @FindBy(xpath = "//a/u[text()='Manage Access']")
     public List<WebElement> manageAccessText;
@@ -25,10 +25,10 @@ public class UserAccessPage {
     @FindBy(id = "Role")
     public WebElement selectRole;
 
-   @FindBy(xpath = "//td[1]")
+    @FindBy(xpath = "//td[1]")
     public List<WebElement> firstNames;
 
-   @FindBy(xpath = "//td[2]")
+    @FindBy(xpath = "//td[2]")
     public List<WebElement> lastNames;
 
     @FindBy(xpath = "//td[3]")
