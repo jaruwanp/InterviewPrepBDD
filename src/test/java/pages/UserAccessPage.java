@@ -19,7 +19,8 @@ public class UserAccessPage {
     @FindBy(xpath = "//a/u[text()='Manage Access']")
     public List<WebElement> manageAccessText;
 
-    @FindBy(id = "Batch")
+     @FindBy(id = "Batch")
+
     public WebElement selectBatch;
 
     @FindBy(id = "Role")
@@ -39,6 +40,5 @@ public class UserAccessPage {
 
     @FindBy(xpath = "//td[5]")
     public List<WebElement> batchs;
-
 
 }

@@ -10,13 +10,19 @@ import pages.CommonPage;
 import pages.HomePage;
 import pages.UserAccessPage;
 import utils.BrowserUtils;
-
+import pages.UserAccessPage;
 import java.util.Map;
 
 public class HomeSteps implements CommonPage {
+
+    HomePage page;
     UserAccessPage userAccessPage;
+    
     public HomeSteps() {
-        userAccessPage  = new UserAccessPage();
+     page = new HomePage();
+     userAccessPage = new UserAccessPage();
+
+
     }
 
     @Given("I open url of homepage")
