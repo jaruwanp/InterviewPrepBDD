@@ -1,18 +1,6 @@
 /.idea
 /target
 config.properties
-<<<<<<< HEAD
 pom.xml
 InterviewPrepBDD.iml
-=======
-InterviewPrepBDD.iml
-<<<<<<< HEAD
-=======
-login.featureLoginSteps
-loginPage
 pom.xml
-<<<<<<< HEAD
->>>>>>> master
-=======
->>>>>>> 3751e1c45f17768bf65afcafaea4670df641777e
->>>>>>> master
