@@ -58,10 +58,6 @@ public class HomeSteps implements CommonPage {
     }
 
 
-    @Then("Verify I can login successfully")
-    public void verify_i_can_login_successfully() {
-        BrowserUtils.assertTrue(true);
-    }
 
 
 
