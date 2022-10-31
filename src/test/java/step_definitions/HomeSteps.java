@@ -41,8 +41,15 @@ public class HomeSteps implements CommonPage {
 
     @When("I click a button {string}")
     public void iClickAButton(String button) {
-        BrowserUtils.click(BrowserUtils.getDriver().findElement(
-                By.xpath(String.format(XPATH_TEMPLATE_BUTTON, button))));
+        WebElement element;
+        switch (button) {
+            case "Manage Access":
+                element = userAccessPage.manageAccessText.get(0);
+                break;
+            default:
+                element = getElementByXpath(XPATH_TEMPLATE_BUTTON, button);
+        }
+        BrowserUtils.click(element);
     }
 }
 
