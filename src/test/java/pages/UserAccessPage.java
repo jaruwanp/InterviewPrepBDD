@@ -22,4 +22,20 @@ public class UserAccessPage {
 
     @FindBy(id = "Role")
     public WebElement selectRole;
+
+   @FindBy(xpath = "//td[1]")
+    public List<WebElement> firstNames;
+
+   @FindBy(xpath = "//td[2]")
+    public List<WebElement> lastNames;
+
+    @FindBy(xpath = "//td[3]")
+    public List<WebElement> emails;
+
+    @FindBy(xpath = "//td[4]")
+    public List<WebElement> rples;
+
+    @FindBy(xpath = "//td[5]")
+    public List<WebElement> batchs;
+
 }
