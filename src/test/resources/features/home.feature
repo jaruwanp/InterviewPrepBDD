@@ -10,15 +10,14 @@ Feature: Home page tests
     Then Verify header text is "Interview App"
 
   @IN-1 @regression
+
   Scenario: Contact Us form test
     Then Verify header text is "Interview App"
 
-@IN-9 @regression
-Scenario: Test Sign Out button navigate back to login page
-  When I click a button Sign out
-#  Then
-#
-@IN-10 @regression
+
+
+@IN-10
+
 Scenario: Test admin logs in Manage Access button is visible
   Given I open login page
   Then I enter username "admin@yahoo.com"
