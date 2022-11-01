@@ -11,7 +11,7 @@ public interface CommonPage {
     String XPATH_TEMPLATE_TEXT_CONTAINS = "//*[contains(text(), '%s')]";
     String XPATH_TEMPLATE_INPUT_FIELD = "//input[@placeholder='%s']";
 
-    String XPATH_TEMPLATE_INPUT_FIEDNAME = "//input[@name='%s']";
+    String XPATH_TEMPLATE_INPUT_FIElDNAME = "//input[@name='%s']";
     ////input[@value='Login']
 
 
