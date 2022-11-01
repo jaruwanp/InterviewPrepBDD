@@ -16,10 +16,10 @@ import java.util.Map;
 
 public class NI13to17Steps implements CommonPage {
     UserAccessPage page;
-    Person person;
+
     public  NI13to17Steps(){
         page = new UserAccessPage();
-        person = new Person("Jaruwan","p","x","s","1");
+
     }
     @Then("Verify the following fields are displayed")
     public void verifyTheFollowingFieldsAreDisplayed(List<String> fields) {
@@ -94,11 +94,65 @@ public class NI13to17Steps implements CommonPage {
 
     @Then("Verify the result display as expected")
     public void verifyTheResultDisplayAsExpected() {
-       // String filter = page.selectFilter;
-        //System.out.println(filter);
+        BrowserUtils.sleep(4000);
+         String option = BrowserUtils.selectGetSelectedText(page.selectFilter);
+         String key = getElementByXpath(XPATH_TEMPLATE_INPUT_FIEDNAME,"search").getText();
+
+         String firstName,lastName,email,role,batch;
+         Person person;
+        System.out.println("filter by : " +  option);
+        System.out.println("Key : " + key);
         List<WebElement> elements = page.rows;
+        System.out.println("Size: " + elements.size());
+        int i=0;
         for(WebElement element:elements){
-            System.out.println(element.findElement(By.xpath("./td")).getText());
+            //./td[1]
+            System.out.println(element.findElement(By.xpath("./td[1]")).getText());
+            System.out.println(element.findElement(By.xpath("./td[2]")).getText());
+            System.out.println(element.findElement(By.xpath("./td[3]")).getText());
+            System.out.println(element.findElement(By.xpath("./td[4]")).getText());
+            System.out.println(element.findElement(By.xpath("./td[5]")).getText());
+            /*firstName= element.findElement(By.xpath("./td[1]")).getText();
+            lastName= element.findElement(By.xpath("./td[2]")).getText();
+            email = element.findElement(By.xpath("./td[3]")).getText();
+            role= element.findElement(By.xpath("./td[4]")).getText();
+            batch= element.findElement(By.xpath("./td[5]")).getText();
+            System.out.println(i + ")" + firstName + " | " + lastName + " | " + email+ " | " +role + " | " +batch );
+            */
+            i++;
+            /*person = new Person(element.findElement(By.xpath("./td[1]")).getText(),
+                    element.findElement(By.xpath("./td[2]")).getText(),
+                    element.findElement(By.xpath("./td[3]")).getText(),
+                    element.findElement(By.xpath("./td[4]")).getText(),
+                    element.findElement(By.xpath("./td[5]")).getText());
+            System.out.println("===============\n" + person.toString());
+            */
+            /*switch (keyword){
+                case "All":
+                    if(person.getFirstName().contains(keyword) || person.getLastName().contains(keyword)
+                            || person.getEmail().contains(keyword) || person.getRole().contains(keyword) ||  person.getBatch().contains(keyword)){
+                        BrowserUtils.assertTrue(true);
+                    } else {BrowserUtils.assertTrue(false);}
+                    break;
+                case "Firstname":
+                    BrowserUtils.assertTrue(person.getFirstName().contains(keyword));
+                    break;
+                case "Lastname":
+                    BrowserUtils.assertTrue(person.getLastName().contains(keyword));
+                    break;
+                case "Email":
+                    BrowserUtils.assertTrue(person.getEmail().contains(keyword));
+                    break;
+                case "Role":
+                    BrowserUtils.assertTrue(person.getRole().contains(keyword));
+                    break;
+                case "Batch":
+                    BrowserUtils.assertTrue(person.getBatch().contains(keyword));
+                    break;
+                default:
+                    BrowserUtils.assertTrue(false);
+            }*/
+
         }
         Assert.assertTrue(true);
 

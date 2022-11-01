@@ -7,6 +7,7 @@ public class Person {
     private String role;
     private String batch;
 
+
     public Person(String firstName, String lastName, String email, String role, String batch) {
         this.firstName = firstName;
         this.lastName = lastName;

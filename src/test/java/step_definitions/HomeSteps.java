@@ -46,13 +46,16 @@ public class HomeSteps implements CommonPage {
 
     @When("I click a button {string}")
     public void iClickAButton(String button) {
+
         WebElement element;
         switch (button) {
             case "Manage Access":
                 element = userAccessPage.manageAccessText.get(0);
                 break;
-            case "Search-Icon":
-                element=userAccessPage.btnSearchIcon;
+            case "Search Icon":
+                element = userAccessPage.btnSearchIcon;
+
+                break;
             default:
                 element = getElementByXpath(XPATH_TEMPLATE_BUTTON, button);
         }

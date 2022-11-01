@@ -37,13 +37,10 @@ Feature: IN13-IN17 Tests
   Scenario Outline: Test Filter-user functionality
     And I select the "<Filter-Option>" option
     And I enter "<Key>" I want to filter
-    And I click a button "Search-Icon"
+    And I click a button "Search Icon"
     Then Verify the result display as expected
     Examples:
       | Filter-Option | Key             |
       | All           | admin           |
       | Firstname     | John            |
-      | Lastname      | admin           |
-      | Email         | admin@yahoo.com |
-      | Role          | Student         |
-      | Batch         | 1               |
+
