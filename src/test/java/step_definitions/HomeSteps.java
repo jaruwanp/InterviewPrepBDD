@@ -1,6 +1,4 @@
 package step_definitions;
-
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -10,11 +8,11 @@ import pages.CommonPage;
 import pages.HomePage;
 import pages.UserAccessPage;
 import utils.BrowserUtils;
-import pages.UserAccessPage;
+
+import java.lang.reflect.Array;
 import java.util.Map;
 
 public class HomeSteps implements CommonPage {
-
     HomePage page;
     UserAccessPage userAccessPage;
     
@@ -54,7 +52,6 @@ public class HomeSteps implements CommonPage {
                 break;
             case "Search Icon":
                 element = userAccessPage.btnSearchIcon;
-
                 break;
             default:
                 element = getElementByXpath(XPATH_TEMPLATE_BUTTON, button);

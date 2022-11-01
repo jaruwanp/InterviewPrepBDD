@@ -156,6 +156,14 @@ public class BrowserUtils {
         element.click();
     }
 
+    public static void waitScollAndHightlight(WebElement element) {
+        //TODO: apply report -> logInfo("clicked the button ", element);
+        // CucumberLogUtils.logInfo("Click: " + splitElement(element),TAKESCREENSHOT);
+        waitForElementVisibility(element);
+        moveIntoView(element);
+        highlightElement(element);
+    }
+
     public static void assertEquals(String actual, String expected) {
         //TODO: apply report -> logInfo("Expected: " + expected);
         CucumberLogUtils.logInfo("Actual: " + actual + " | Expected: " + expected,TAKESCREENSHOT);
