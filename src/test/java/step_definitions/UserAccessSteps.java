@@ -3,6 +3,7 @@ package step_definitions;
 import data.pojos.Person;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,10 +19,12 @@ import java.util.Map;
 public class UserAccessSteps implements CommonPage {
 
     UserAccessPage page;
+    HomeSteps homeSteps;
+    String newDashBoardName = "Bugbuster";
 
     public UserAccessSteps() {
         page = new UserAccessPage();
-
+        homeSteps = new HomeSteps();
     }
 
     @Then("Verify {string} button is present")
@@ -37,6 +40,61 @@ public class UserAccessSteps implements CommonPage {
         BrowserUtils.assertTrue(page.manageAccessText.size()==0);
     }
 
+    @When("I fill out login form with following details: {string} and password")
+    public void iFillOutLoginFormWithFollowingDetailsAndPassword(String username) {
+        switch (username) {
+            case "test@yahoo.com" :
+                BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.xpath(String.format(
+                        XPATH_TEMPLATE_INPUT_FIELD, "Enter Username"
+                ))), username);
+                BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.xpath(String.format(
+                        XPATH_TEMPLATE_INPUT_FIELD, "Enter Password"
+                ))), "test123");
+                break;
+            case "admin@yahoo.com" :
+                BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.xpath(String.format(
+                        XPATH_TEMPLATE_INPUT_FIELD, "Enter Username"
+                ))), username);
+                BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.xpath(String.format(
+                        XPATH_TEMPLATE_INPUT_FIELD, "Enter Password"
+                ))), "admin123");
+                break;
+
+        }
+    }
+
+    @Then("Verify any question could be edited or deleted")
+    public void verifyAnyQuestionCouldBeEditedOrDeleted() {
+        BrowserUtils.assertEquals(String.valueOf(page.deleteIcons.size()), String.valueOf(page.doAndDontRows.size()));
+        BrowserUtils.assertEquals(String.valueOf(page.editIcons.size()), String.valueOf(page.doAndDontRows.size()));
+    }
+
+    @And("I enter input field {string}")
+    public void iEnterInputField(String newDashboardInput) {
+        BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.xpath(String.format(
+                XPATH_TEMPLATE_INPUT_FIELD, newDashboardInput
+        ))), newDashBoardName);
+    }
+
+    @Then("Verify regular user could see new dashboard")
+    public void verifyRegularUserCouldSeeNewDashboard() {
+        BrowserUtils.click(BrowserUtils.getDriver().findElement(By.xpath(String.format(
+                XPATH_TEMPLATE_TEXT, "Sign out"
+        ))));
+        iFillOutLoginFormWithFollowingDetailsAndPassword("test@yahoo.com");
+        homeSteps.iClickAButton("Login");
+
+        BrowserUtils.assertEquals(page.newDashboard.getText(), newDashBoardName);
+
+        // Delete the created dashboard
+        homeSteps.iClickAButton("Sign out");
+        iFillOutLoginFormWithFollowingDetailsAndPassword("admin@yahoo.com");
+        homeSteps.iClickAButton("Login");
+        BrowserUtils.click(page.deleteNewDashboardBtn);
+        BrowserUtils.waitForElementClickability(page.deleteBtn);
+        homeSteps.iClickAButton("Delete");
+
+    }
     @Then("Verify the following fields are displayed")
     public void verifyTheFollowingFieldsAreDisplayed(List<String> fields) {
         WebElement element = null;

@@ -15,7 +15,7 @@ public class UserAccessPage {
         PageFactory.initElements(BrowserUtils.getDriver(), this);
     }
 
-    @FindBy(xpath = "//a/u[text()='Sign out']")
+    @FindBy(xpath = "//*[text()='Sign out']")
     public WebElement signOutBtn;
 
     @FindBy(xpath = "//a/u[text()='Manage Access']")
@@ -47,6 +47,24 @@ public class UserAccessPage {
 
     @FindBy(xpath = "//a[@class='navbar-brand']")
     public WebElement logo;
+
+    @FindBy(xpath = "//form[@class='form-inline']/*[last()]")
+    public WebElement newDashboard;
+
+    @FindBy(xpath = "//form[@class='form-inline']/*[last()]/div")
+    public WebElement deleteNewDashboardBtn;
+
+    @FindBy(xpath = "//*[text()='Delete']")
+    public WebElement deleteBtn;
+
+    @FindBy(xpath = "//button[contains(@class,'danger ml')]")
+    public List<WebElement> deleteIcons;
+
+    @FindBy(xpath = "//button[contains(@class,'outline-warning')]")
+    public List<WebElement> editIcons;
+
+    @FindBy(xpath = "//div[contains(@class,'DoAndDont')]//div[@class='row']")
+    public List<WebElement> doAndDontRows;
 
     public boolean checkExistingTextInTable(String str){
         System.out.println("//td[text()='" + str + "']");

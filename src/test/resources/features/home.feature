@@ -1,6 +1,5 @@
 Feature: Home page tests
-  Background: Navigate to Login Page
-
+  Background: Navigate to Home Page
     Given I open url of homepage
     When I fill out login form with following details:
       | email    | test@yahoo.com |
