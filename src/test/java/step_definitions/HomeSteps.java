@@ -1,22 +1,28 @@
 package step_definitions;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pages.CommonPage;
+import pages.DashboardPage;
 import pages.HomePage;
+import pages.UserAccessPage;
 import utils.BrowserUtils;
 
 import java.util.Map;
 
+
 public class HomeSteps implements CommonPage {
     HomePage page;
+    DashboardPage dashboardPage;
+    UserAccessPage userAccessPage;
 
     public HomeSteps() {
         page = new HomePage();
+        userAccessPage = new UserAccessPage();
+        dashboardPage = new DashboardPage();
 
     }
 
@@ -41,14 +47,31 @@ public class HomeSteps implements CommonPage {
 
     @When("I click a button {string}")
     public void iClickAButton(String button) {
-        BrowserUtils.click(BrowserUtils.getDriver().findElement(
-                By.xpath(String.format(XPATH_TEMPLATE_BUTTON, button))));
+
+        WebElement element;
+        switch (button) {
+            case "Manage Access":
+                element = userAccessPage.manageAccessText.get(0);
+                break;
+            case "Search Icon":
+                element = userAccessPage.btnSearchIcon;
+                break;
+            case "Add don't":
+                element = dashboardPage.btnAddDont;
+                break;
+            default:
+                element = getElementByXpath(XPATH_TEMPLATE_BUTTON, button);
+        }
+        BrowserUtils.click(element);
     }
 
     @Then("Verify I can login successfully")
     public void verify_i_can_login_successfully() {
         BrowserUtils.assertTrue(true);
     }
+
+
+
 }
 
 
