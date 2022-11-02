@@ -83,4 +83,6 @@ public class DashboardSteps implements CommonPage {
         BrowserUtils.sleep(3000);
         BrowserUtils.assertFalse(page.dontLastRow.getText().equals(txt));
     }
+
 }
+
