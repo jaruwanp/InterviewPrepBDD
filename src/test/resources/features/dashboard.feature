@@ -41,3 +41,28 @@ Feature: Dashboard page tests
     And I add input text Don't: "Test%%12344567@##$%&&%%%"
     And I click a button "Enter"
     Then Verify "Test%%12344567@##$%&&%%%" does not exist in the lasted row of Dont's table
+
+#  @IN-5
+#  Scenario Outline: Test to add questions in Coding dashboard
+#    And I click a button "Coding"
+#    And I click a button "Enter new question"
+#    And I enter "<questions>" I want to add
+#    And I click a button "enter"
+#    Examples:
+#      | questions |
+#      | What is Java? |
+#      | Test special charecters #$$$$%@ |
+#      | Test Number : 122345 |
+#    Then Verify "<questions>" I added are accepted:
+#    Examples:
+#      | questions |
+#      | What is Java? |
+#      | Are these  #$$@ |
+#      | Test Number : 122345 |
+
+#  @IN-6
+#  Scenario : Verify a user cna edit or delete the question I have added
+#    And I click a button "Coding"
+#    And I click a button "Enter new question"
+#    And I enter "Hello this is my new topic today" I want to add
+#    Then verify I can edit the topic "Hello this is my new topic today" I've added
