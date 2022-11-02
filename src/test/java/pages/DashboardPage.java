@@ -6,8 +6,8 @@ import org.openqa.selenium.support.PageFactory;
 import utils.BrowserUtils;
 
 public class DashboardPage {
-    public  DashboardPage(){
-        PageFactory.initElements(BrowserUtils.getDriver(),this);
+    public DashboardPage() {
+        PageFactory.initElements(BrowserUtils.getDriver(), this);
     }
 
 
@@ -32,6 +32,5 @@ public class DashboardPage {
 
     @FindBy(xpath = "//button[text()=\"Add don't \"]")
     public WebElement btnAddDont;
-
 
 }
