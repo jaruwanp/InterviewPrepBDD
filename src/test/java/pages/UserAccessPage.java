@@ -1,5 +1,4 @@
 package pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +9,7 @@ import utils.BrowserUtils;
 import java.util.List;
 
 public class UserAccessPage {
+
 
     public UserAccessPage() {
         PageFactory.initElements(BrowserUtils.getDriver(), this);
@@ -22,7 +22,6 @@ public class UserAccessPage {
     public List<WebElement> manageAccessText;
 
     @FindBy(id = "Batch")
-
     public WebElement selectBatch;
 
     @FindBy(id = "Role")
@@ -106,3 +105,4 @@ public class UserAccessPage {
 
     }
 }
+

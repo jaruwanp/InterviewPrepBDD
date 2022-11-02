@@ -17,7 +17,6 @@ import org.junit.runner.RunWith;
         stepNotifications = true,
         dryRun = false
         ,tags = "@IN-4D"
-
 )
 public class CukesRunner {
 

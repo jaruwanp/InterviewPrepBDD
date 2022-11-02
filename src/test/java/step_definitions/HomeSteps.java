@@ -10,12 +10,13 @@ import pages.DashboardPage;
 import pages.HomePage;
 import pages.UserAccessPage;
 import utils.BrowserUtils;
-
+import pages.UserAccessPage;
 import java.util.Map;
 
 
 public class HomeSteps implements CommonPage {
     HomePage page;
+
     DashboardPage dashboardPage;
     UserAccessPage userAccessPage;
 
@@ -23,7 +24,6 @@ public class HomeSteps implements CommonPage {
         page = new HomePage();
         userAccessPage = new UserAccessPage();
         dashboardPage = new DashboardPage();
-
     }
 
     @Given("I open url of homepage")
@@ -47,7 +47,6 @@ public class HomeSteps implements CommonPage {
 
     @When("I click a button {string}")
     public void iClickAButton(String button) {
-
         WebElement element;
         switch (button) {
             case "Manage Access":
@@ -69,8 +68,6 @@ public class HomeSteps implements CommonPage {
     public void verify_i_can_login_successfully() {
         BrowserUtils.assertTrue(true);
     }
-
-
 
 }
 
