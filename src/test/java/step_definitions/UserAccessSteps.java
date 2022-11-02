@@ -28,4 +28,6 @@ public class UserAccessSteps implements CommonPage {
     public void verify_button_is_not_displayed(String manageAccessText) {
         BrowserUtils.assertTrue(page.manageAccessText.size()==0);
     }
+
+
 }

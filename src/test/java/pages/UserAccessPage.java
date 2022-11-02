@@ -1,5 +1,4 @@
 package pages;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -7,10 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import utils.BrowserUtils;
 
-import java.security.PublicKey;
 import java.util.List;
 
 public class UserAccessPage {
+
 
     public UserAccessPage() {
         PageFactory.initElements(BrowserUtils.getDriver(), this);
@@ -22,8 +21,7 @@ public class UserAccessPage {
     @FindBy(xpath = "//a/u[text()='Manage Access']")
     public List<WebElement> manageAccessText;
 
-     @FindBy(id = "Batch")
-
+    @FindBy(id = "Batch")
     public WebElement selectBatch;
 
     @FindBy(id = "Role")
@@ -107,3 +105,4 @@ public class UserAccessPage {
 
     }
 }
+

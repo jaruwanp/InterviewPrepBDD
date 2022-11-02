@@ -16,8 +16,7 @@ import org.junit.runner.RunWith;
         glue = "step_definitions",
         stepNotifications = true,
         dryRun = false
-        ,tags = "@regression"
-
+        ,tags = "@IN-4D"
 )
 public class CukesRunner {
 
