@@ -5,17 +5,26 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import pages.CommonPage;
+import pages.DashboardPage;
 import pages.HomePage;
+import pages.UserAccessPage;
 import utils.BrowserUtils;
+
+import java.util.Map;
+
 
 public class HomeSteps implements CommonPage {
     HomePage page;
-    String newDashBoardName = "Bugbuster";
+
+    DashboardPage dashboardPage;
+    UserAccessPage userAccessPage;
 
     public HomeSteps() {
         page = new HomePage();
-
+        userAccessPage = new UserAccessPage();
+        dashboardPage = new DashboardPage();
     }
 
     @Given("I open url of homepage")
@@ -28,66 +37,35 @@ public class HomeSteps implements CommonPage {
         BrowserUtils.assertEquals(BrowserUtils.getDriver().getTitle(), headerTitle);
     }
 
-    @Given("I open url of login page")
-    public void iOpenUrlOfLoginPage() {
-        BrowserUtils.getDriver();
-    }
-    @When("I fill out login form with following details: {string} and password")
-    public void iFillOutLoginFormWithFollowingDetailsAndPassword(String username) {
-        switch (username) {
-            case "test@yahoo.com" :
-                BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.xpath(String.format(
-                        XPATH_TEMPLATE_INPUT_FIELD, "Enter Username"
-                ))), username);
-                BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.xpath(String.format(
-                        XPATH_TEMPLATE_INPUT_FIELD, "Enter Password"
-                ))), "test123");
-                break;
-            case "admin@yahoo.com" :
-                BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.xpath(String.format(
-                        XPATH_TEMPLATE_INPUT_FIELD, "Enter Username"
-                ))), username);
-                BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.xpath(String.format(
-                        XPATH_TEMPLATE_INPUT_FIELD, "Enter Password"
-                ))), "admin123");
-                break;
-
+    @When("I fill out login form with following details:")
+    public void iFillOutLoginFormWithFollowingDetails(Map<String, String> map) {
+        for (String key : map.keySet()) {
+            BrowserUtils.sendKeys(
+                    BrowserUtils.getDriver().findElement(By.name(key)), map.get(key)
+            );
         }
     }
 
     @And("I click a button {string}")
     public void iClickAButton(String button) {
-        BrowserUtils.click(BrowserUtils.getDriver().findElement(By.xpath(String.format(
-                XPATH_TEMPLATE_BUTTON, button
-        ))));
-    }
 
-    @Then("Verify any question could be edited or deleted")
-    public void verifyAnyQuestionCouldBeEditedOrDeleted() {
-        BrowserUtils.assertEquals(String.valueOf(page.deleteIcons.size()), String.valueOf(page.rows.size()));
-        BrowserUtils.assertEquals(String.valueOf(page.editIcons.size()), String.valueOf(page.rows.size()));
-    }
-
-    @And("I enter input field {string}")
-    public void iEnterInputField(String newDashboardInput) {
-        BrowserUtils.sendKeys(BrowserUtils.getDriver().findElement(By.xpath(String.format(
-                XPATH_TEMPLATE_INPUT_FIELD, newDashboardInput
-        ))), newDashBoardName);
-    }
-
-    @Then("Verify regular user could see new dashboard")
-    public void verifyRegularUserCouldSeeNewDashboard() {
-        BrowserUtils.click(BrowserUtils.getDriver().findElement(By.xpath(String.format(
-                XPATH_TEMPLATE_TEXT, "Sign out"
-        ))));
-        iFillOutLoginFormWithFollowingDetailsAndPassword("test@yahoo.com");
-        iClickAButton("Login");
-
-        BrowserUtils.assertEquals(page.newDashboard.getText(), newDashBoardName);
-    }
-
-    @Then("Verify I can login successfully")
-    public void verify_i_can_login_successfully() {
-        BrowserUtils.assertTrue(true);
+        WebElement element;
+        switch (button) {
+            case "Manage Access":
+                element = userAccessPage.manageAccessText.get(0);
+                break;
+            case "Search Icon":
+                element = userAccessPage.btnSearchIcon;
+                break;
+            case "Add don't":
+                element = dashboardPage.btnAddDont;
+                break;
+            case "Sign out":
+                element = userAccessPage.signOutBtn;
+                break;
+            default:
+                element = getElementByXpath(XPATH_TEMPLATE_BUTTON, button);
+        }
+        BrowserUtils.click(element);
     }
 }

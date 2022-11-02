@@ -1,7 +1,7 @@
 /.idea
 /target
 config.properties
-InterviewPrepBDD.iml
-login.featureLoginSteps
-loginPage
 pom.xml
+InterviewPrepBDD.iml
+/src/test/java/runners/CukesRunner.java
+/src/test/java/data/Temp.java

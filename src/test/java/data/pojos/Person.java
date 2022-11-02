@@ -1,18 +1,19 @@
 package data.pojos;
 
 public class Person {
-   protected String firstName;
-    protected String lastName;
-    protected String zipcode;
+    private String firstName;
+    private String lastName;
+    private String email;
+    private String role;
+    private String batch;
 
-    public Person(String firstName, String lastName, String zipcode) {
+
+    public Person(String firstName, String lastName, String email, String role, String batch) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.zipcode = zipcode;
-    }
-
-    public String getFirstName() {
-        return firstName;
+        this.email = email;
+        this.role = role;
+        this.batch = batch;
     }
 
     @Override
@@ -20,8 +21,14 @@ public class Person {
         return "Person{" +
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", zipcode='" + zipcode + '\'' +
+                ", email='" + email + '\'' +
+                ", role='" + role + '\'' +
+                ", batch='" + batch + '\'' +
                 '}';
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
@@ -36,13 +43,27 @@ public class Person {
         this.lastName = lastName;
     }
 
-    public String getZipcode() {
-        return zipcode;
+    public String getEmail() {
+        return email;
     }
 
-    public void setZipcode(String zipcode) {
-        this.zipcode = zipcode;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
+    public String getRole() {
+        return role;
+    }
 
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public String getBatch() {
+        return batch;
+    }
+
+    public void setBatch(String batch) {
+        this.batch = batch;
+    }
 }

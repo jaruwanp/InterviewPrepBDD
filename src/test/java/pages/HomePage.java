@@ -3,7 +3,6 @@ package pages;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import step_definitions.HomeSteps;
 import utils.BrowserUtils;
 
 import java.util.List;
@@ -25,4 +24,5 @@ public class HomePage {
 
     @FindBy(xpath = "//div[contains(@class,'DoAndDont')]//div[@class='row']")
     public List<WebElement> rows;
+
 }

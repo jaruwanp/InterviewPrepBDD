@@ -156,6 +156,14 @@ public class BrowserUtils {
         element.click();
     }
 
+    public static void waitScollAndHightlight(WebElement element) {
+        //TODO: apply report -> logInfo("clicked the button ", element);
+        // CucumberLogUtils.logInfo("Click: " + splitElement(element),TAKESCREENSHOT);
+        waitForElementVisibility(element);
+        moveIntoView(element);
+        highlightElement(element);
+    }
+
     public static void assertEquals(String actual, String expected) {
         //TODO: apply report -> logInfo("Expected: " + expected);
         CucumberLogUtils.logInfo("Actual: " + actual + " | Expected: " + expected,TAKESCREENSHOT);
@@ -215,6 +223,10 @@ public class BrowserUtils {
         select.selectByValue(text);
     }
 
+    public static String selectGetSelectedText(WebElement element) {
+        Select select = new Select(element);
+        return select.getOptions().get(0).getText();
+    }
     private static String splitElement(WebElement element){
         String result =element.toString().split(" -> ")[1];
         return result.substring(0,result.length()-1);
