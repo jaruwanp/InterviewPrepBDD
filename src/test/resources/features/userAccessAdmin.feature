@@ -1,4 +1,4 @@
-Feature: IN13-IN17 Tests
+Feature: UserAccess Admin Feature
   Background:
     Given I open url of homepage
     When I fill out login form with following details:
@@ -7,7 +7,7 @@ Feature: IN13-IN17 Tests
     And I click a button "Login"
     And I click a button "Manage Access"
 
-  @NI-13 @regression
+  @IN-13 @regression
   Scenario: Verify manage access form
     Then Verify the following fields are displayed
       | First Name |
@@ -16,7 +16,7 @@ Feature: IN13-IN17 Tests
       | Role       |
       | Batch      |
 
-  @NI-14 @regression
+  @IN-14 @regression
   Scenario: Add a new user in Manage Access page
     And I fill out the following info to create a new user
       | First Name | Jaruwan           |
@@ -32,7 +32,7 @@ Feature: IN13-IN17 Tests
       | Role       | Instructor        |
       | Batch      | 6                 |
 
-  @NI-15 @regression
+  @IN-15 @regression
   Scenario Outline: Test Filter-user functionality
     And I select the "<Filter-Option>" option
     And I enter "<Key>" I want to filter
@@ -46,14 +46,14 @@ Feature: IN13-IN17 Tests
       | Email         | admin@yahoo.com |
       | Role          | Student         |
       | Batch         | 1               |
-  @NI-16 @regression
+  @IN-16 @regression
   Scenario: Verify update user info functionality
     Then verify the following options are enable for each user
     | Edit |
     | Delete |
     | Reset Password |
 
-  @NI-17 @regression
+  @IN-17 @regression
   Scenario: Test reset search filter option
     And I filtered data with email "admin@yahoo.com" and found 1 row
     And I click a button "Show all"
