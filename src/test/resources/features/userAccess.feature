@@ -10,3 +10,7 @@ Feature: User Access page test
   Scenario: Verify Sign out text
     Then Verify "Sign out" button is present
     Then Verify "Manage Access" Button is not displayed
+
+  @IN-2 @regression
+  Scenario: Verify three dashboards are display
+    Then Ver
