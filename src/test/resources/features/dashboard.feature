@@ -77,3 +77,26 @@ Feature: Dashboard page tests
     And Click edit the topic "Hello this is my new question today, by Grace" I've added by adding the word "-updated"
     Then Verify the topic I've edited should be "Hello this is my new question today, by Grace -updated"
     Then Verify I can delete the question "Hello this is my new question today, by Grace -updated" I've created
+
+  @IN-7 @regression
+  Scenario: Verify "All Topics" option will display all question from other dashboards
+    Then I verify all questions in following categories should be displayed in "All Topics"
+      | Coding        |
+      | Soft skills   |
+      | New Dashboard |
+      | Prep          |
+      | Java          |
+
+  @IN-8A @regression
+  Scenario: Verify search criteria should not accept keyword length more than 40 characters
+    And I click a button "All Topics"
+    And I enter a search keyword "123456789012345678901234567890123456789012345"
+    And I click a button "Search icon"
+    Then Verify that search function should not accept a long keyword
+
+  @IN-8B @regression
+  Scenario: Verify "Show all" button will bring back all question to view by removing the filter
+    And I click a button "All Topics"
+    And I enter a search keyword "java"
+    And I click a button "Search icon"
+    Then Verify it brings back all the topic by removing the keyword

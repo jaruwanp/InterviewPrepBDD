@@ -56,4 +56,13 @@ public class DashboardPage {
     public void  deleteQuestionByQuestion(String question){
         BrowserUtils.getDriver().findElement(By.xpath("//p[normalize-space()='" + question + "']/following::button[1]")).click();
     }
+
+    @FindBy(xpath = "//div[@class='row question-section shadow-sm']")
+    public List<WebElement> listOfAllQuestions;
+
+    @FindBy(xpath = "//a[@class='navbar-brand']")
+    public WebElement logo;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement btnSearchIcon;
 }
