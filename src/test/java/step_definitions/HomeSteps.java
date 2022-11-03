@@ -57,6 +57,9 @@ public class HomeSteps implements CommonPage {
             case "Search Icon":
                 element = userAccessPage.btnSearchIcon;
                 break;
+            case "Search icon":
+                element = dashboardPage.btnSearchIcon;
+                break;
             case "Add don't":
                 element = dashboardPage.btnAddDont;
                 break;
@@ -72,4 +75,6 @@ public class HomeSteps implements CommonPage {
     public void verifyIHaveBeenRedirectedToLoginPage() {
         BrowserUtils.assertEquals(BrowserUtils.getDriver().getCurrentUrl(),"https://interview-prep-test.herokuapp.com/login");
     }
+
+
 }

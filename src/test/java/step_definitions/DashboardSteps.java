@@ -1,11 +1,14 @@
 package step_definitions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.WebElement;
 import pages.CommonPage;
 import pages.DashboardPage;
 import utils.BrowserUtils;
 import org.openqa.selenium.By;
+import utils.CucumberLogUtils;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -135,6 +138,83 @@ public class DashboardSteps implements CommonPage {
     @And("I enter question {string}")
     public void iEnterQuestion(String question) {
         BrowserUtils.sendKeys(page.textAreaAddQuestion, question);
+    }
+
+    @Then("I verify all questions in following categories should be displayed in \"All Topics\"")
+    public void iVerifyAllQuestionsInFollowingCategoriesShouldBeDisplayedIn(List<String> categories) {
+
+        BrowserUtils.click(this.getElementByXpath(XPATH_TEMPLATE_BUTTON,"All Topics"));
+        BrowserUtils.sleep(3000);
+
+        //Step1: Add all the topic in an arraylist
+        List<String>  allTopics  =new ArrayList<>();
+        for(WebElement element:page.listOfAllQuestions){
+            allTopics.add(element.getText());
+        }
+        //Step2: loop through the category you want to verify
+        for (String category:categories){
+            List<String> subTopics = new ArrayList<>();
+            BrowserUtils.click(page.logo);
+            //Click on that Dashboard Category
+            BrowserUtils.click(this.getElementByXpath(XPATH_TEMPLATE_BUTTON,category));
+            BrowserUtils.sleep(2000);
+            //if found list of question , add to array
+            if (page.listOfAllQuestions.size() > 0){
+                for(WebElement element:page.listOfAllQuestions){
+                    subTopics.add(element.getText());
+                }
+                //Verify that all topic contains sub topic
+                for(String topic:subTopics){
+                    CucumberLogUtils.logInfo(topic,false);
+                    BrowserUtils.assertTrue(allTopics.contains(topic));
+                }
+            }
+            else
+            {
+                CucumberLogUtils.logInfo("No question found in category:" + category ,false);
+                BrowserUtils.assertTrue(true);
+            }
+        }
+
+    }
+
+    @And("I enter a search keyword {string}")
+    public void iEnterASearchKeyword(String keyword) {
+        BrowserUtils.sendKeys(this.getElementByXpath(XPATH_TEMPLATE_INPUT_FIEDNAME,"search"),keyword);
+    }
+
+    @Then("Verify that search function should not accept a long keyword")
+    public void verifyThatSearchFunctionShouldNotAcceptTheLongKeyword() {
+        //the result shouln't be the same as original
+        BrowserUtils.sleep(3000);
+        int totalQAfterFiltered = page.listOfAllQuestions.size();
+        BrowserUtils.click(page.logo);
+        BrowserUtils.click(this.getElementByXpath(XPATH_TEMPLATE_BUTTON,"All Topics"));
+        BrowserUtils.sleep(2000);
+        //total question result should be the same as original if the funtion didn't accept keyword
+        BrowserUtils.assertTrue(totalQAfterFiltered==page.listOfAllQuestions.size());
+    }
+
+    @Then("Verify it brings back all the topic by removing the keyword")
+    public void verifyItBringsBackAllTheTopicByRemovingTheKeyword() {
+        String log="";
+        BrowserUtils.sleep(2000);
+        int totalQAfterFiltered = page.listOfAllQuestions.size();
+        log += "Total questions after filter = " + totalQAfterFiltered;
+        BrowserUtils.click(this.getElementByXpath(XPATH_TEMPLATE_BUTTON,"Show all"));
+        BrowserUtils.sleep(2000);
+        int totalQAfterReset = page.listOfAllQuestions.size();
+        log += ", Total questions after clicking \"Show all\" = " + totalQAfterReset;
+
+        BrowserUtils.assertTrue(totalQAfterFiltered < totalQAfterReset);
+        BrowserUtils.click(page.logo);
+        BrowserUtils.click(this.getElementByXpath(XPATH_TEMPLATE_BUTTON,"All Topics"));
+        BrowserUtils.sleep(2000);
+        int totalAfterReloaded = page.listOfAllQuestions.size();
+        log += ", Total questions after reloading the \"All topics\" = " + totalAfterReloaded;
+        CucumberLogUtils.logInfo(log,false);
+        BrowserUtils.assertTrue(totalQAfterReset ==totalAfterReloaded);
+
     }
 }
 
