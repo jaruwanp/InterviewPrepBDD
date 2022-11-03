@@ -68,4 +68,8 @@ public class HomeSteps implements CommonPage {
         }
         BrowserUtils.click(element);
     }
+    @Then("verify I have been redirected to login page")
+    public void verifyIHaveBeenRedirectedToLoginPage() {
+        BrowserUtils.assertEquals(BrowserUtils.getDriver().getCurrentUrl(),"https://interview-prep-test.herokuapp.com/login");
+    }
 }

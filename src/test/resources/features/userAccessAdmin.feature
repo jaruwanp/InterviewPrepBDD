@@ -6,6 +6,10 @@ Feature: UserAccess Admin Feature
       | password | admin123        |
     And I click a button "Login"
 
+  @IN-10 @regression
+  Scenario: Verify when admin logs in "Manage Access" button should be visible
+    Then Verify button "Manage Access" is visible
+
   @IN-11 @regression
   Scenario: Edit/Delete any question under Interview section
     Then Verify any question could be edited or deleted

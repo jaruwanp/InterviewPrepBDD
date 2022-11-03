@@ -294,4 +294,9 @@ public class UserAccessSteps implements CommonPage {
         BrowserUtils.sleep(1000);
 
     }
+    @Then("Verify button {string} is visible")
+    public void verifyButtonIsVisible(String arg0) {
+        BrowserUtils.assertTrue(page.manageAccessText.size()>0);
+    }
+
 }
