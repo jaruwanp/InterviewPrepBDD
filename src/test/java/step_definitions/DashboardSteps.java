@@ -82,7 +82,59 @@ public class DashboardSteps implements CommonPage {
     public void verifyDoesNotExistInTheLastedRowOfDontSTable(String txt) {
         BrowserUtils.sleep(3000);
         BrowserUtils.assertFalse(page.dontLastRow.getText().equals(txt));
+
+
     }
 
+    @And("Click edit the topic {string} I've added by adding the word {string}")
+    public void clickEditTheTopicIVeAddedByAddingTheWord(String question, String extension) {
+        BrowserUtils.click(page.getEditButtonByQuestion(question));
+        BrowserUtils.sendKeys(page.textAreaEditQuestion,extension);
+        BrowserUtils.click(page.btnUpdateTopic);
+    }
+
+    @Then("Verify the topic I've edited should be {string}")
+    public void verifyTheTopicIVeEditedShouldBe(String updated_question) {
+        BrowserUtils.sleep(1000);
+        BrowserUtils.assertTrue(page.getQuestionsListByQuestion(updated_question).size() > 0);
+
+    }
+
+    @Then("Verify I can delete the question {string} I've created")
+    public void verifyICanDeleteTheQuestionIVeCreated(String question) {
+        page.deleteQuestionByQuestion(question);
+        BrowserUtils.sleep(1000);
+        BrowserUtils.assertTrue(page.getQuestionsListByQuestion(question).size() == 0);
+    }
+
+    @And("I enter coding question {string} I want to add")
+    public void iEnter_IWantToAdd(String question) {
+        BrowserUtils.sendKeys(page.textAreaAddQuestion,question);
+
+    }
+
+    @Then("Verify the {string} I entered to coding dashboard are accepted as they contain letter, numbers, and any special characters")
+    public void verifyTheIEnteredAreAccepted(String question) {
+        BrowserUtils.sleep(1000);
+        BrowserUtils.assertTrue(page.getQuestionsListByQuestion(question).size() > 0);
+        page.deleteQuestionByQuestion(question);
+    }
+
+    @And("I enter soft skill {string} I want to add")
+    public void iEnterSoftSkillIWantToAdd(String question) {
+        BrowserUtils.sendKeys(this.getElementByXpath(XPATH_TEMPLATE_INPUT_FIEDNAME,"question"),question);
+    }
+
+    @Then("Verify the {string} I entered to soft skill dashboard are accepted as they contain letter, numbers, and any special characters")
+    public void verifyTheIEnteredToSoftSkillDashboardAreAcceptedAsTheyContainLetterNumbersAndAnySpecialCharacters(String question) {
+        BrowserUtils.sleep(1000);
+        BrowserUtils.assertTrue(page.getQuestionsListByQuestion(question).size() > 0);
+        page.deleteQuestionByQuestion(question);
+    }
+
+    @And("I enter question {string}")
+    public void iEnterQuestion(String question) {
+        BrowserUtils.sendKeys(page.textAreaAddQuestion, question);
+    }
 }
 

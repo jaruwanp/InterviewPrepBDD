@@ -42,27 +42,38 @@ Feature: Dashboard page tests
     And I click a button "Enter"
     Then Verify "Test%%12344567@##$%&&%%%" does not exist in the lasted row of Dont's table
 
-#  @IN-5
-#  Scenario Outline: Test to add questions in Coding dashboard
-#    And I click a button "Coding"
-#    And I click a button "Enter new question"
-#    And I enter "<questions>" I want to add
-#    And I click a button "enter"
-#    Examples:
-#      | questions |
-#      | What is Java? |
-#      | Test special charecters #$$$$%@ |
-#      | Test Number : 122345 |
-#    Then Verify "<questions>" I added are accepted:
-#    Examples:
-#      | questions |
-#      | What is Java? |
-#      | Are these  #$$@ |
-#      | Test Number : 122345 |
+  @IN-5A
+  Scenario Outline: Test adding questions on Coding dashboard
+    When I click a button "Coding"
+    And I click a button "Enter new question "
+    And I enter coding question "<questions>" I want to add
+    And I click a button "Enter"
+    Then Verify the "<questions>" I entered to coding dashboard are accepted as they contain letter, numbers, and any special characters
+    Examples:
+      | questions                                                            |
+      | What is Java? - Letter only - by Grace                               |
+      | What is Selenium - 1234567890 - Letter and Numbers - by Grace        |
+      | What is Cucumber - @#$$$$&**~)_+&&^% - special characters - by Grace |
 
-#  @IN-6
-#  Scenario : Verify a user cna edit or delete the question I have added
-#    And I click a button "Coding"
-#    And I click a button "Enter new question"
-#    And I enter "Hello this is my new topic today" I want to add
-#    Then verify I can edit the topic "Hello this is my new topic today" I've added
+  @IN-5B
+  Scenario Outline: Test adding questions on Coding dashboard
+    When I click a button "Soft skills"
+    And I click a button "Enter new question "
+    And I enter soft skill "<questions>" I want to add
+    And I click a button "Enter"
+    Then Verify the "<questions>" I entered to soft skill dashboard are accepted as they contain letter, numbers, and any special characters
+    Examples:
+      | questions                                                                            |
+      | What are soft skills is Java? - Letter only - by Grace                               |
+      | What are these numbers: 1234567890990000 - Letter and Numbers - by Grace             |
+      | What are these special characters: @#$$$$&**~)_+&&^% - special characters - by Grace |
+
+  @IN-6
+  Scenario: Verify a user can edit or delete the question I have added
+    When I click a button "Coding"
+    And I click a button "Enter new question "
+    And I enter question "Hello this is my new question today, by Grace"
+    And I click a button "Enter"
+    And Click edit the topic "Hello this is my new question today, by Grace" I've added by adding the word "-updated"
+    Then Verify the topic I've edited should be "Hello this is my new question today, by Grace -updated"
+    Then Verify I can delete the question "Hello this is my new question today, by Grace -updated" I've created
