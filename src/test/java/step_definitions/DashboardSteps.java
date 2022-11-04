@@ -30,7 +30,7 @@ public class DashboardSteps implements CommonPage {
     public void verifyICanEditTheTopicIVeAdded(String arg0) {
     }
 
-    @Then("Verify following input button is displayed:")
+    @Then("Verify following dashboards are displayed")
     public void verifyFollowingInputButtonIsDisplayed(List<String> buttons) {
         for (String button: buttons){
             BrowserUtils.assertTrue(this.getElementByXpath(XPATH_TEMPLATE_BUTTON,button).isDisplayed());
