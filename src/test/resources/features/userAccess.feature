@@ -1,4 +1,4 @@
-Feature: User Access page test
+Feature: UserAccess page test
   Background: Navigate to Login Page
     Given I open url of homepage
     When I fill out login form with following details:

@@ -1,5 +1,4 @@
 Feature: Dashboard page tests
-
   Background:
     Given I open url of homepage
     When I fill out login form with following details:
@@ -42,7 +41,7 @@ Feature: Dashboard page tests
     And I click a button "Enter"
     Then Verify "Test%%12344567@##$%&&%%%" does not exist in the lasted row of Dont's table
 
-  @IN-5A
+  @IN-5A @regression
   Scenario Outline: Test adding questions on Coding dashboard
     When I click a button "Coding"
     And I click a button "Enter new question "
@@ -55,7 +54,7 @@ Feature: Dashboard page tests
       | What is Selenium - 1234567890 - Letter and Numbers - by Grace        |
       | What is Cucumber - @#$$$$&**~)_+&&^% - special characters - by Grace |
 
-  @IN-5B
+  @IN-5B @regression
   Scenario Outline: Test adding questions on Coding dashboard
     When I click a button "Soft skills"
     And I click a button "Enter new question "
@@ -68,7 +67,7 @@ Feature: Dashboard page tests
       | What are these numbers: 1234567890990000 - Letter and Numbers - by Grace             |
       | What are these special characters: @#$$$$&**~)_+&&^% - special characters - by Grace |
 
-  @IN-6
+  @IN-6 @regression
   Scenario: Verify a user can edit or delete the question I have added
     When I click a button "Coding"
     And I click a button "Enter new question "

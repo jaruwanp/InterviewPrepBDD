@@ -1,4 +1,4 @@
-Feature: Home page tests
+Feature: Homepage tests
   Background: Navigate to Home Page
     Given I open url of homepage
     When I fill out login form with following details:
