@@ -30,7 +30,7 @@ public class DashboardSteps implements CommonPage {
     public void verifyICanEditTheTopicIVeAdded(String arg0) {
     }
 
-    @Then("Verify following input button is displayed:")
+    @Then("Verify following dashboards are displayed")
     public void verifyFollowingInputButtonIsDisplayed(List<String> buttons) {
         for (String button: buttons){
             BrowserUtils.assertTrue(this.getElementByXpath(XPATH_TEMPLATE_BUTTON,button).isDisplayed());
@@ -186,11 +186,11 @@ public class DashboardSteps implements CommonPage {
     @Then("Verify that search function should not accept a long keyword")
     public void verifyThatSearchFunctionShouldNotAcceptTheLongKeyword() {
         //the result shouln't be the same as original
-        BrowserUtils.sleep(3000);
+        BrowserUtils.sleep(1000);
         int totalQAfterFiltered = page.listOfAllQuestions.size();
         BrowserUtils.click(page.logo);
         BrowserUtils.click(this.getElementByXpath(XPATH_TEMPLATE_BUTTON,"All Topics"));
-        BrowserUtils.sleep(2000);
+        BrowserUtils.sleep(1000);
         //total question result should be the same as original if the funtion didn't accept keyword
         BrowserUtils.assertTrue(totalQAfterFiltered==page.listOfAllQuestions.size());
     }

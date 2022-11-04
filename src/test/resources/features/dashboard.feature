@@ -1,5 +1,4 @@
 Feature: Dashboard page tests
-
   Background:
     Given I open url of homepage
     When I fill out login form with following details:
@@ -8,41 +7,41 @@ Feature: Dashboard page tests
     And I click a button "Login"
 
   @IN-3 @regression
-  Scenario: Verify all 3 dashboards are displayed
-    Then Verify following input button is displayed:
+  Scenario: Verify all of the three dashboards are displayed
+    Then Verify following dashboards are displayed
       | All Topics  |
       | Coding      |
       | Soft skills |
 
-  @IN-4A @regression
-  Scenario: Verify Do's functionality is working as expected
+  @IN-4 @IN-4A @regression
+  Scenario: Verify "Do's functionality" is working as expected
     When I click a button "Add do "
     And I add input text Do: "Test12344567"
     And I click a button "Enter"
     Then Verify "Test12344567" exists in the lasted row of Do's table
 
-  @IN-4B @regression
-  Scenario: Verify Dont's functionality is working as expected
+  @IN-4 @IN-4B @regression
+  Scenario: Verify "Dont's functionality" is working as expected
     When I click a button "Add don't"
     And I add input text Don't: "Test12344567"
     And I click a button "Enter"
     Then Verify "Test12344567" exists in the lasted row of Dont's table
 
-  @IN-4C @regression
-  Scenario: Verify Do functionality that accepts only letters and numbers
+  @IN-4 @IN-4C @regression
+  Scenario: Verify "Do functionality" accepts only letters and numbers
     When I click a button "Add do "
     And I add input text Do: "Test%%12344567@##$%&&%%%"
     And I click a button "Enter"
     Then Verify "Test%%12344567@##$%&&%%%" does not exist in the lasted row of Do's table
 
-  @IN-4D @regression
-  Scenario: Verify Don't functionality that accepts only letters and numbers
+  @IN-4 @IN-4D @regression
+  Scenario: Verify "Don't functionality" accepts only letters and numbers
     When I click a button "Add don't"
     And I add input text Don't: "Test%%12344567@##$%&&%%%"
     And I click a button "Enter"
     Then Verify "Test%%12344567@##$%&&%%%" does not exist in the lasted row of Dont's table
 
-  @IN-5A
+  @IN-5 @IN-5A @regression
   Scenario Outline: Test adding questions on Coding dashboard
     When I click a button "Coding"
     And I click a button "Enter new question "
@@ -55,8 +54,8 @@ Feature: Dashboard page tests
       | What is Selenium - 1234567890 - Letter and Numbers - by Grace        |
       | What is Cucumber - @#$$$$&**~)_+&&^% - special characters - by Grace |
 
-  @IN-5B
-  Scenario Outline: Test adding questions on Coding dashboard
+  @IN-5 @IN-5B @regression
+  Scenario Outline: Test adding questions on Soft skills dashboard
     When I click a button "Soft skills"
     And I click a button "Enter new question "
     And I enter soft skill "<questions>" I want to add
@@ -68,8 +67,8 @@ Feature: Dashboard page tests
       | What are these numbers: 1234567890990000 - Letter and Numbers - by Grace             |
       | What are these special characters: @#$$$$&**~)_+&&^% - special characters - by Grace |
 
-  @IN-6
-  Scenario: Verify a user can edit or delete the question I have added
+  @IN-6 @regression
+  Scenario: Verify a user can edit or delete question he/she added
     When I click a button "Coding"
     And I click a button "Enter new question "
     And I enter question "Hello this is my new question today, by Grace"
@@ -87,14 +86,14 @@ Feature: Dashboard page tests
       | Prep          |
       | Java          |
 
-  @IN-8A @regression
+  @IN-8 @IN-8A @regression
   Scenario: Verify search criteria should not accept keyword length more than 40 characters
     And I click a button "All Topics"
     And I enter a search keyword "123456789012345678901234567890123456789012345"
     And I click a button "Search icon"
     Then Verify that search function should not accept a long keyword
 
-  @IN-8B @regression
+  @IN-8 @IN-8B @regression
   Scenario: Verify "Show all" button will bring back all question to view by removing the filter
     And I click a button "All Topics"
     And I enter a search keyword "java"

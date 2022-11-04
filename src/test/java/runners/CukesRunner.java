@@ -16,7 +16,7 @@ import org.junit.runner.RunWith;
         glue = "step_definitions",
         stepNotifications = true,
         dryRun = false,
-        tags = "@IN-10"
+        tags = "@IN-8A"
 
 )
 public class CukesRunner {
